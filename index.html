@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Cedra Construction | Engineering & Contracting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Lebanon-based contractors with over 30 years of experience in structural works, core & shell and finishing." />
+<style>
+:root {
+  --primary:#145b6b;
+  --primary-light:#1f8a9f;
+  --accent:#f1c232;
+  --text:#222;
+  --muted:#666;
+  --bg:#f5f6f8;
+  --white:#ffffff;
+  --radius:16px;
+  --shadow-soft:0 16px 35px rgba(0,0,0,0.10);
+}
+
+/* RESET */
+* { box-sizing:border-box; margin:0; padding:0; }
+
+body {
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:radial-gradient(circle at top left,#e4f0f3 0,#f5f6f8 55%,#f3eee9 100%);
+  color:var(--text);
+  line-height:1.6;
+}
+
+img { max-width:100%; display:block; }
+a { color:inherit; text-decoration:none; }
+p { text-align:justify; }
+
+.container {
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 1.5rem;
+}
+
+/* HEADER */
+header {
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(245,246,248,0.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+
+.nav {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:4.4rem;
+}
+
+.logo-wrap {
+  display:flex;
+  align-items:center;
+}
+
+.site-logo {
+  max-height:70px;   /* bigger logo */
+  max-width:220px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+
+/* hide text block if any remains in HTML by mistake */
+.logo-text-main,
+.logo-text-sub { display:none; }
+
+.nav-links {
+  display:flex;
+  gap:1.6rem;
+  font-size:0.95rem;
+  color:var(--muted);
+}
+
+.nav-links a {
+  position:relative;
+  font-weight:500;
+}
+
+.nav-links a::after {
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  height:2px;
+  width:0;
+  background:var(--primary);
+  border-radius:999px;
+  transition:width 0.2s ease;
+}
+
+.nav-links a:hover {
+  color:var(--primary);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width:18px;
+}
+
+.nav-links a.active {
+  color:var(--primary);
+}
+
+.nav-toggle {
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:4px;
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,0.16);
+  background:#fff;
+  cursor:pointer;
+  padding:4px 7px;
+}
+
+.nav-toggle span {
+  height:2px;
+  border-radius:999px;
+  background:#444;
+  width:100%;
+}
+
+.nav-actions {
+  display:flex;
+  gap:0.8rem;
+  align-items:center;
+}
+
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0.75rem 1.5rem;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+  font-size:0.9rem;
+  font-weight:600;
+  background:var(--primary);
+  color:var(--white);
+  box-shadow:var(--shadow-soft);
+  transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+  transform:translateY(-1px);
+  background:var(--primary-light);
+}
+
+.btn-outline {
+  background:linear-gradient(135deg, rgba(20,91,107,0.08), rgba(31,138,159,0.12));
+  color:var(--primary);
+  border:2px solid rgba(20,91,107,0.55);
+  box-shadow:0 10px 22px rgba(0,0,0,0.08);
+  font-weight:600;
+}
+.btn-outline:hover {
+  background:linear-gradient(135deg, rgba(20,91,107,0.16), rgba(31,138,159,0.22));
+}
+
+.btn-outline:hover {
+  background:rgba(20,91,107,0.06);
+}
+
+@media (max-width:840px) {
+  .nav-links,
+  .nav-actions { display:none; }
+  .nav-toggle { display:flex; }
+  header.nav-open .nav-links,
+  header.nav-open .nav-actions {
+    display:flex;
+    flex-direction:column;
+    position:absolute;
+    top:4.5rem;
+    right:1.5rem;
+    padding:1rem 1.2rem;
+    border-radius:16px;
+    background:#fff;
+    box-shadow:var(--shadow-soft);
+    width:min(260px,72vw);
+  }
+}
+
+/* PAGE VIEWS */
+main { padding:2.8rem 0 3rem; }
+.page-view { display:none; }
+.page-view.active { display:block; }
+
+/* LAYOUT HELPERS */
+.hero-grid {
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+  gap:2.8rem;
+  align-items:center;
+}
+@media (max-width:900px) { .hero-grid { grid-template-columns:1fr; } }
+
+.grid-2 {
+  display:grid;
+  grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+  gap:2.4rem;
+}
+.grid-3 {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1.6rem;
+}
+@media (max-width:900px) { .grid-2 { grid-template-columns:1fr; } }
+@media (max-width:900px) { .grid-3 { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:640px) { .grid-3 { grid-template-columns:1fr; } }
+
+.card {
+  background:rgba(255,255,255,0.98);
+  border-radius:var(--radius);
+  padding:1.6rem 1.5rem;
+  box-shadow:var(--shadow-soft);
+  border:1px solid rgba(0,0,0,0.03);
+}
+
+.section-heading {
+  margin-bottom:1.6rem;
+}
+.section-heading h1,
+.section-heading h2 {
+  font-size:2.25rem;
+  margin-bottom:0.35rem;
+}
+
+.section-heading h1,
+.section-heading h2{
+  position:relative;
+  letter-spacing:-0.02em;
+}
+.section-heading h1::after,
+.section-heading h2::after{
+  content:"";
+  display:block;
+  width:64px;
+  height:4px;
+  border-radius:999px;
+  margin-top:0.6rem;
+  background:linear-gradient(90deg,var(--accent),var(--primary-light));
+  opacity:0.95;
+}
+
+.section-heading p {
+  font-size:0.95rem;
+  color:var(--muted);
+  max-width:36rem;
+}
+
+.pill {
+  display:inline-flex;
+  align-items:center;
+  gap:0.45rem;
+  padding:0.28rem 0.9rem;
+  border-radius:999px;
+  background:rgba(20,91,107,0.07);
+  color:var(--primary);
+  font-size:0.8rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  margin-bottom:0.8rem;
+}
+
+.img-box {
+  border-radius:14px;
+  overflow:hidden;
+  max-height:580px;
+  background:#eee;
+}
+.img-box img {
+  width:100%;
+  height:auto;
+}
+
+/* HOME VIEW */
+.hero-title {
+  font-size:clamp(2.1rem,3.2vw+1.1rem,3rem);
+  margin-bottom:0.4rem;
+}
+.hero-title span { color:var(--primary); }
+
+/* ABOUT VIEW – reorganised & coloured */
+.about-top {
+  display:grid;
+  grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+  gap:2.2rem;
+  margin-top:1.4rem;
+}
+@media (max-width:900px) { .about-top { grid-template-columns:1fr; } }
+
+.about-block {
+  background:rgba(255,255,255,0.98);
+  border-radius:var(--radius);
+  padding:1.6rem 1.5rem;
+  box-shadow:var(--shadow-soft);
+  border:1px solid rgba(0,0,0,0.03);
+}
+
+.about-highlight {
+  background:linear-gradient(135deg,#145b6b,#1f8a9f);
+  color:#fff;
+}
+
+.about-highlight h3 {
+  margin-bottom:0.4rem;
+}
+
+.about-highlight p {
+  color:rgba(255,255,255,0.9);
+}
+
+.about-tags {
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.4rem;
+  margin-top:0.8rem;
+}
+.about-tag {
+  padding:0.18rem 0.6rem;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.55);
+  font-size:0.78rem;
+}
+
+.about-bottom {
+  margin-top:2.2rem;
+}
+
+.about-bottom-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1.4rem;
+}
+@media (max-width:900px) { .about-bottom-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:640px) { .about-bottom-grid { grid-template-columns:1fr; } }
+
+.about-bottom-card {
+  background:#ffffff;
+  border-radius:14px;
+  padding:1.3rem 1.2rem;
+  border-top:4px solid rgba(20,91,107,0.2);
+  box-shadow:0 10px 24px rgba(0,0,0,0.08);
+}
+.about-bottom-card h3 {
+  font-size:1rem;
+  margin-bottom:0.4rem;
+}
+
+/* PROJECTS VIEW – gallery with clickable cards */
+.projects-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1.6rem;
+  margin-top:1.6rem;
+}
+@media (max-width:900px) { .projects-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:640px) { .projects-grid { grid-template-columns:1fr; } }
+
+.project-card {
+  background:#ffffff;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:var(--shadow-soft);
+  border:1px solid rgba(0,0,0,0.03);
+  cursor:pointer;
+  transition:transform 0.15s ease, box-shadow 0.15s ease;
+}
+.project-card:hover {
+  transform:translateY(-3px);
+  box-shadow:0 18px 40px rgba(0,0,0,0.14);
+}
+.project-thumb {
+  height:180px;
+  background:#ddd;
+  overflow:hidden;
+}
+.project-thumb img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.project-body {
+  padding:1rem 1.1rem 1.2rem;
+}
+.project-title {
+  font-weight:600;
+  margin-bottom:0.25rem;
+}
+.project-meta {
+  font-size:0.85rem;
+  color:var(--muted);
+}
+
+/* Modal for project details */
+.project-modal-backdrop {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:1rem;
+  z-index:50;
+}
+.project-modal-backdrop.active {
+  display:flex;
+}
+.project-modal {
+  background:#ffffff;
+  border-radius:18px;
+  max-width:720px;
+  width:100%;
+  box-shadow:0 24px 60px rgba(0,0,0,0.35);
+  overflow:hidden;
+}
+.project-modal-header {
+  padding:1rem 1.4rem;
+  border-bottom:1px solid rgba(0,0,0,0.06);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.project-modal-header h2 {
+  font-size:1.3rem;
+}
+.project-modal-close {
+  border:none;
+  background:transparent;
+  font-size:1.4rem;
+  cursor:pointer;
+}
+.project-modal-body {
+  padding:1.4rem 1.4rem 1.6rem;
+  font-size:0.94rem;
+  color:var(--muted);
+}
+
+/* CONTACT VIEW */
+footer {
+  border-top:1px solid rgba(0,0,0,0.06);
+  padding:1.8rem 0;
+  font-size:0.82rem;
+  color:var(--muted);
+  background:rgba(247,248,249,0.95);
+}
+.footer-inner {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:1rem;
+}
+
+/* Inputs in contact */
+input, textarea {
+  font-family:inherit;
+}
+
+/* --- Visual polish --- */
+body::before{
+  content:"";
+  position:fixed;
+  inset:-40vh -40vw auto auto;
+  width:70vw;
+  height:70vw;
+  background:radial-gradient(circle at 30% 30%, rgba(241,194,50,0.28), transparent 55%),
+             radial-gradient(circle at 70% 60%, rgba(31,138,159,0.22), transparent 60%);
+  filter:blur(10px);
+  z-index:-2;
+  pointer-events:none;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:auto auto -35vh -35vw;
+  width:70vw;
+  height:70vw;
+  background:radial-gradient(circle at 35% 45%, rgba(20,91,107,0.20), transparent 58%),
+             radial-gradient(circle at 70% 70%, rgba(241,194,50,0.18), transparent 60%);
+  filter:blur(10px);
+  z-index:-2;
+  pointer-events:none;
+}
+.card{
+  transition:transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 22px 50px rgba(0,0,0,0.13);
+  border-color:rgba(31,138,159,0.18);
+}
+.btn{
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+}
+.btn:hover{
+  background:linear-gradient(135deg,var(--primary-light),var(--primary));
+}
+.btn-outline {
+  background:linear-gradient(135deg, rgba(20,91,107,0.08), rgba(31,138,159,0.12));
+  color:var(--primary);
+  border:2px solid rgba(20,91,107,0.55);
+  box-shadow:0 10px 22px rgba(0,0,0,0.08);
+  font-weight:600;
+}
+.btn-outline:hover {
+  background:linear-gradient(135deg, rgba(20,91,107,0.16), rgba(31,138,159,0.22));
+}
+.pill{
+  background:linear-gradient(135deg, rgba(20,91,107,0.10), rgba(241,194,50,0.10));
+  border:1px solid rgba(31,138,159,0.15);
+}
+
+
+/* ===== Project modal: larger + gallery ===== */
+.project-modal-backdrop { z-index:50; }
+.project-modal { max-width:980px; max-height:85vh; overflow-y:auto; }
+.project-modal-body { font-size:0.94rem; color:var(--muted); }
+.project-modal-body strong { color:var(--primary); display:inline-block; margin-bottom:0.6rem; text-transform:uppercase; letter-spacing:0.06em; }
+.project-modal-body p { color:var(--muted); margin-top:0.6rem; }
+.project-modal-body .modal-gallery{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1.2rem;
+  margin-top:1.2rem;
+}
+.project-modal-body .modal-gallery img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:16px;
+  background:#eee;
+}
+
+
+/* FORCE mobile menu items to appear (Home / About / Projects / Contact) */
+@media (max-width: 840px) {
+  header.nav-open .nav-links {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 4.5rem;
+    right: 1rem;
+    left: 1rem;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 1.2rem;
+    box-shadow: var(--shadow-soft);
+    z-index: 9999;
+  }
+
+  header.nav-open .nav-links a {
+    padding: 0.8rem 0;
+    font-size: 1.05rem;
+  }
+}
+
+
+/* Make phone, email & WhatsApp links look clickable */
+.contact-card a,
+.card a[href^="tel:"],
+.card a[href^="mailto:"],
+.card a[href*="wa.me"]{
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact-card a:hover,
+.card a[href^="tel:"]:hover,
+.card a[href^="mailto:"]:hover,
+.card a[href*="wa.me"]:hover{
+  color: var(--primary-light);
+}
+
+
+/* ===== Image lightbox (simple & safe) ===== */
+.lightbox-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:10000;
+}
+.lightbox-overlay.active{display:flex;}
+.lightbox-overlay img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:14px;
+}
+.lightbox-close{
+  position:absolute;
+  top:20px;
+  right:26px;
+  font-size:2.4rem;
+  color:#fff;
+  cursor:pointer;
+}
+.project-modal-body .modal-gallery img{
+  cursor:zoom-in;
+}
+
+
+/* Lightbox arrow buttons */
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.45);
+  border: none;
+  color: #fff;
+  font-size: 2.6rem;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  border-radius: 8px;
+  z-index: 10001;
+}
+.lightbox-nav.prev { left: 20px; }
+.lightbox-nav.next { right: 20px; }
+.lightbox-nav:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+
+/* ===== WHAT WE DO FULL-WIDTH IMAGE SECTION ===== */
+.what-we-do-hero {
+  width: 100%;
+  margin: 3rem 0 2.5rem;
+  height: 420px;
+  background: url('images/what-we-do.jpg') center/cover no-repeat;
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+.what-we-do-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.15),
+    rgba(0,0,0,0.55)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.what-we-do-overlay h2 {
+  color: #ffffff;
+  font-size: clamp(2.6rem, 4vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+
+/* FORCE full-width image section */
+.what-we-do-hero {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+
+/* Active project video – behave exactly like img */
+.img-box video.active-project-video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="logo-wrap" data-view="home">
+      <img src="images/logo.png" alt="Company logo" class="site-logo">
+    </a>
+    <nav class="nav-links">
+      <a href="#" data-view="home" class="active">Home</a>
+      <a href="#" data-view="about">About</a>
+      <a href="#" data-view="projects">Projects</a>
+      <a href="#" data-view="contact">Contact Us</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" data-view="contact" class="btn-outline btn">Call us</a>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main class="container">
+  <!-- HOME VIEW -->
+  <section class="page-view active" id="view-home">
+    <div class="hero-grid">
+      <div>
+        <div class="pill">Construction & contracting</div>
+        <h1 class="hero-title">
+          Structural quality,<br><span>delivered on time.</span>
+        </h1>
+        <p style="font-size:0.97rem;color:var(--muted);max-width:34rem;margin-bottom:1.4rem;">
+          Cedra Construction is a Lebanon-based contracting company with more than
+          <strong>30 years of experience</strong> delivering reinforced concrete
+          structures, core & shell packages and architectural finishes for residential,
+          commercial and urban infill projects.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.8rem;margin-bottom:1.4rem;">
+          <a href="#" data-view="contact" class="btn">Request a construction quote</a>
+          <a href="#" data-view="projects" class="btn btn-outline">View our projects</a>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:1.5rem;font-size:0.86rem;color:var(--muted);">
+          <div>
+            <strong style="display:block;color:var(--primary);font-size:1.02rem;">30+ years</strong>
+            Continuous contracting experience in Lebanon
+          </div>
+          <div>
+            <strong style="display:block;color:var(--primary);font-size:1.02rem;">On-site presence</strong>
+            Daily supervision from excavation to handover
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img-box">
+          <video autoplay muted loop playsinline class="active-project-video">
+  <source src="videos/ACH.mp4" type="video/mp4">
+</video>
+        </div>
+        <p style="margin-top:0.8rem;font-size:0.88rem;color:var(--muted);">
+          <strong>Active project – Achrafieh 1646, Beirut</strong><br>
+          13-floor reinforced concrete residential tower in a dense urban context,
+          with Cedra Construction leading structural works, core & shell execution
+          and site-level coordination.
+        </p>
+      </div>
+    </div>
+  
+
+    <!-- WHAT WE DO HERO IMAGE -->
+    <section class="what-we-do-hero">
+      <div class="what-we-do-overlay">
+        <h2>What we do</h2>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <div style="margin-top:2.4rem;">
+      <div class="grid-3">
+        <div class="card" style="border-top:4px solid rgba(20,91,107,0.22);">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.6rem;">
+            <span style="width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg, rgba(20,91,107,0.16), rgba(31,138,159,0.16));display:grid;place-items:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 20V10l8-6 8 6v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h3 style="font-size:1.05rem;">Structural works</h3>
+          </div>
+          <p style="color:var(--muted);font-size:0.92rem;">Reinforced concrete execution: foundations, columns, slabs, and all on-site sequencing and supervision.</p>
+        </div>
+
+        <div class="card" style="border-top:4px solid rgba(241,194,50,0.30);">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.6rem;">
+            <span style="width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg, rgba(241,194,50,0.18), rgba(31,138,159,0.14));display:grid;place-items:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 21h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 21V8l6-4 6 4v13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 21v-6h4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <h3 style="font-size:1.05rem;">Core & shell</h3>
+          </div>
+          <p style="color:var(--muted);font-size:0.92rem;">Blockwork, waterproofing interfaces, façade readiness, and coordination for clean MEP routing.</p>
+        </div>
+
+        <div class="card" style="border-top:4px solid rgba(31,138,159,0.26);">
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.6rem;">
+            <span style="width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg, rgba(31,138,159,0.16), rgba(20,91,107,0.12));display:grid;place-items:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7 20V4h10v16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 8h6M9 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <h3 style="font-size:1.05rem;">Finishing packages</h3>
+          </div>
+          <p style="color:var(--muted);font-size:0.92rem;">Architectural finishes with disciplined site control, QA checks, and clear handover documentation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- VALUE BAND -->
+    <div class="card" style="margin-top:1.8rem;padding:1.6rem 1.6rem;background:linear-gradient(135deg, rgba(20,91,107,0.10), rgba(241,194,50,0.10));border:1px solid rgba(31,138,159,0.12);">
+      <div class="grid-3" style="gap:1.2rem;align-items:start;">
+        <div>
+          <div class="pill" style="margin-bottom:0.6rem;">How we work</div>
+          <h3 style="font-size:1.25rem;margin-bottom:0.4rem;">Clear process. Strong site presence.</h3>
+          <p style="color:var(--muted);font-size:0.92rem;">We keep a tight loop between drawings, site teams and consultants so decisions happen early — not when problems appear on site.</p>
+        </div>
+        <div class="card" style="background:rgba(255,255,255,0.85);box-shadow:none;border:1px solid rgba(0,0,0,0.05);">
+          <strong style="color:var(--primary);display:block;margin-bottom:0.2rem;">1) Plan & coordinate</strong>
+          <span style="color:var(--muted);font-size:0.9rem;">Buildability review, method statements, basic quantities, early trade alignment.</span>
+        </div>
+        <div class="card" style="background:rgba(255,255,255,0.85);box-shadow:none;border:1px solid rgba(0,0,0,0.05);">
+          <strong style="color:var(--primary);display:block;margin-bottom:0.2rem;">2) Execute & control</strong>
+          <span style="color:var(--muted);font-size:0.9rem;">Daily supervision, progress tracking, QA checks, and clean handover documentation.</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ABOUT VIEW -->
+  <section class="page-view" id="view-about">
+    <div class="section-heading">
+      <div class="pill">About our company</div>
+      <h1>Experienced contractors with 30+ years on site</h1>
+      <p>
+        We combine long-term on-site experience in Lebanon with professional site
+        management, technical understanding and disciplined execution.
+      </p>
+    </div>
+
+    <div class="about-top">
+      <div class="about-block">
+        <p>
+          For more than <strong>30 years</strong>, our team has been present on
+          construction sites across Lebanon, delivering buildings from the first
+          excavation bucket to the final handover. We understand not only drawings
+          and specifications, but also how they translate into formwork, rebar,
+          logistics and the daily realities of a working site.
+        </p>
+        <p style="margin-top:0.9rem;">
+          We frequently support clients, architects and engineers with buildability
+          reviews, basic quantity checks and method statements before execution
+          begins. During construction, we maintain close coordination with
+          consultants and specialist trades to resolve issues early and avoid
+          disruption on site.
+        </p>
+        <p style="margin-top:0.9rem;">
+          Our delivery is built on three pillars: clear communication, disciplined
+          site management and respect for the design intent. We aim to keep
+          projects organised, with proper documentation, agreed procedures and
+          transparent reporting to our clients.
+        </p>
+      </div>
+
+      <div class="about-block about-highlight">
+        <h3>Based in Lebanon</h3>
+        <p>
+          Our office is located in Sed al Baouchriyeh, Beirut, giving us immediate access to
+          key project locations across the Greater Beirut area and beyond.
+        </p>
+        <div class="about-tags">
+          <span class="about-tag">Structural works</span>
+          <span class="about-tag">Core & shell</span>
+          <span class="about-tag">Finishing</span>
+          <span class="about-tag">Refurbishment</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-bottom">
+      <div class="about-bottom-grid">
+        <div class="about-bottom-card">
+          <h3>Technical coordination</h3>
+          <p>
+            We work closely with structural and MEP engineers so that details are
+            coordinated on paper before they reach the site, reducing clashes and
+            rework during execution.
+          </p>
+        </div>
+        <div class="about-bottom-card">
+          <h3>Site discipline</h3>
+          <p>
+            Clean sites, organised storage, clear access routes and attention to
+            safety help our teams work efficiently while reducing risk for everyone
+            involved in the project.
+          </p>
+        </div>
+        <div class="about-bottom-card">
+          <h3>Client focus</h3>
+          <p>
+            We provide realistic feedback on cost, time and technical constraints
+            from day one, allowing owners and developers to make informed decisions
+            at each stage of the project.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS VIEW -->
+  <section class="page-view" id="view-projects">
+    <div class="section-heading">
+      <div class="pill">Projects</div>
+      <h1>Selected projects</h1>
+      <p>
+        Click on any project to view its key details, scope of works and Cedra
+        Construction&apos;s responsibilities.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <article class="project-card" data-project="achrafieh1646">
+        <div class="project-thumb">
+          <img src="images/achrafieh1646.jpg" alt="Achrafieh 1646 – Beirut">
+        </div>
+        <div class="project-body">
+          <div class="project-title">Achrafieh 1646 – Beirut</div>
+          <div class="project-meta">13-floor residential tower · Active project</div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card" data-project="Shams">
+        <div class="project-thumb">
+          <img src="images/Shams1.jpg" alt="Shams Beirut">
+        </div>
+        <div class="project-body">
+          <div class="project-title">Shams Beirut - Beirut</div>
+          <div class="project-meta">High-rise residential · Completed project</div>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card" data-project="Medawar1200">
+        <div class="project-thumb">
+          <img src="images/Medawar1.jpg" alt="Medawar1200">
+        </div>
+        <div class="project-body">
+          <div class="project-title">Medawar 1200 - Beirut</div>
+          <div class="project-meta">High-rise Building · Completed project</div>
+        </div>
+      </article>
+
+ <!-- Project 4 -->
+      <article class="project-card" data-project="Residence580">
+        <div class="project-thumb">
+          <img src="images/5801.jpg" alt="580 Residence">
+        </div>
+        <div class="project-body">
+          <div class="project-title">580 Residence - Mirna El Hosn - Beirut</div>
+          <div class="project-meta">Residential Building · Completed project</div>
+        </div>
+      </article>
+  
+ <!-- Project 5 -->
+      <article class="project-card" data-project="Toyotacity">
+        <div class="project-thumb">
+          <img src="images/toyota1.jpg" alt="Toyota City">
+        </div>
+        <div class="project-body">
+          <div class="project-title">Toyota City - Hazmieh</div>
+          <div class="project-meta">Large-scale Commercial automotive facility · Completed project</div>
+        </div>
+      </article>
+
+<!-- Project 6 -->
+      <article class="project-card" data-project="UCA">
+        <div class="project-thumb">
+          <img src="images/UCA1.jpg" alt="UCA Aley">
+        </div>
+        <div class="project-body">
+          <div class="project-title">Universal College (new building) - Aley</div>
+          <div class="project-meta">Educational facility located in Aley · Completed project</div>
+        </div>
+      </article>
+
+<!-- Project 7 -->
+      <article class="project-card" data-project="mario">
+        <div class="project-thumb">
+          <img src="images/mario1.jpg" alt="Private Residential Villa">
+        </div>
+        <div class="project-body">
+          <div class="project-title">Private Residential Villa - Cedars</div>
+          <div class="project-meta">Private Residential Villa · Completed project</div>
+        </div>
+      </article>
+
+<!-- Project 8 -->
+      <article class="project-card" data-project="achrafieh668">
+        <div class="project-thumb">
+          <img src="images/6681.jpg" alt="UCA Aley">
+        </div>
+        <div class="project-body">
+          <div class="project-title">Achrafieh668 - Forn El Hayek Street</div>
+          <div class="project-meta">Residential Building in Achrafieh · Completed project</div>
+        </div>
+      </article>
+
+<!-- Project 9 -->
+      <article class="project-card" data-project="romanos">
+        <div class="project-thumb">
+          <img src="images/romanos1.jpg" alt="Romanos Villa - Cedars">
+        </div>
+        <div class="project-body">
+          <div class="project-title">Romanos Villa - Cedars</div>
+          <div class="project-meta">Private Residential Villa · Completed project</div>
+        </div>
+      </article>
+
+<!-- Project 10 -->
+      <article class="project-card" data-project="fanar">
+        <div class="project-thumb">
+          <img src="images/fanar1.jpg" alt="Residential Building - Fanar">
+        </div>
+        <div class="project-body">
+          <div class="project-title">Residential Building - Fanar</div>
+          <div class="project-meta">Residential Building · Completed project</div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CONTACT VIEW -->
+  <section class="page-view" id="view-contact">
+    <div class="section-heading">
+      <div class="pill">Request a Quote</div>
+      <h1>Speak with our team</h1>
+      <p>
+        Share some basic information about your project or contact us directly by
+        phone or email. We will respond with clarifications and, where possible,
+        an initial view on scope and next steps.
+      </p>
+    </div>
+
+    <div class="grid-2" style="margin-top:1.6rem;">
+      <form class="card"
+      action="https://formspree.io/f/xdkqldbp"
+      method="POST">
+        <h2 style="font-size:1.3rem;margin-bottom:0.6rem;">Send us a message</h2>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <input type="text" name="name" placeholder="Name" style="flex:1;min-width:180px;padding:0.6rem;border-radius:9px;border:1px solid rgba(0,0,0,0.16);">
+          <input type="email" name="email" placeholder="Email" style="flex:1;min-width:180px;padding:0.6rem;border-radius:9px;border:1px solid rgba(0,0,0,0.16);">
+        </div>
+        <input type="tel" name="phone" placeholder="Phone / WhatsApp" style="width:100%;margin-top:0.7rem;padding:0.6rem;border-radius:9px;border:1px solid rgba(0,0,0,0.16);">
+        <textarea name="message" placeholder="Project details (location, area, type of work, timeline…)" style="width:100%;margin-top:0.7rem;padding:0.6rem;border-radius:9px;border:1px solid rgba(0,0,0,0.16);min-height:120px;"></textarea>
+        <button type="submit" class="btn" style="margin-top:0.8rem;">Send request</button>
+        <p style="font-size:0.8rem;color:var(--muted);margin-top:0.4rem;">
+        </p>
+      </form>
+
+      <div style="display:flex;flex-direction:column;gap:1.2rem;font-size:0.9rem;color:var(--muted);">
+        <div class="card">
+          <strong>Phone / WhatsApp</strong><br>
+          <a href="tel:+96103305700">+961 03 305 700</a> (<a href="https://wa.me/96103305700" target="_blank" rel="noopener">WhatsApp</a>)<br>
+          <a href="tel:+96179305700">+961 79 305 700</a> (<a href="https://wa.me/96179305700" target="_blank" rel="noopener">WhatsApp</a>)
+        </div>
+        <div class="card">
+          <strong>Email</strong><br>
+          <a href="mailto:tawkmansour@gmail.com">tawkmansour@gmail.com</a><br>
+          <a href="mailto:rami_tawk@hotmail.com">rami_tawk@hotmail.com</a>
+        </div>
+        <div class="card">
+          <strong>Office</strong><br>
+          Sed al Baouchriyeh, Beirut – Lebanon<br><br>
+          <strong>Working hours:</strong><br>
+          Monday – Friday: 8:00 – 17:00
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> Cedra Construction. All rights reserved.</div>
+    <div> Beirut · Lebanon</div>
+  </div>
+</footer>
+
+<!-- PROJECT MODAL -->
+<div class="project-modal-backdrop" id="project-modal-backdrop">
+  <div class="project-modal">
+    <div class="project-modal-header">
+      <h2 id="project-modal-title">Project title</h2>
+      <button class="project-modal-close" id="project-modal-close" aria-label="Close project details">&times;</button>
+    </div>
+    <div class="project-modal-body" id="project-modal-body">
+      <!-- Filled by JavaScript -->
+    </div>
+  </div>
+</div>
+
+<script>
+// Year
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Views
+const views = {
+  home: document.getElementById("view-home"),
+  about: document.getElementById("view-about"),
+  projects: document.getElementById("view-projects"),
+  contact: document.getElementById("view-contact")
+};
+
+function showView(name) {
+  for (const key in views) {
+    if (views[key]) views[key].classList.toggle("active", key === name);
+  }
+  document.querySelectorAll(".nav-links a").forEach(a => {
+    a.classList.toggle("active", a.dataset.view === name);
+  });
+  document.querySelector("header").classList.remove("nav-open");
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+// Nav clicks
+document.querySelectorAll("[data-view]").forEach(el => {
+  el.addEventListener("click", e => {
+    e.preventDefault();
+    const view = el.dataset.view;
+    if (view && views[view]) {
+      showView(view);
+    }
+  });
+});
+
+// Mobile nav toggle
+const navToggle = document.getElementById("nav-toggle");
+const header = document.querySelector("header");
+if (navToggle) {
+  navToggle.addEventListener("click", () => {
+    header.classList.toggle("nav-open");
+  });
+}
+
+// Project modal logic
+const projectDetails = {
+  achrafieh1646: {
+    title: "Achrafieh 1646 – Beirut",
+    body: `<strong>Description</strong>
+    <p>13-floor reinforced concrete residential tower located in Achrafieh, Beirut. Cedra Construction is responsible for structural works and core & shell, including coordination with façade and MEP trades in a dense urban environment.</p>
+<p>Scope of works includes excavation support, foundations, vertical elements, slabs, blockwork and selected finishing packages, with particular attention to logistics, safety and phased execution on a constrained urban site.</p>
+    <div class="modal-gallery">
+      <img src="images/achrafieh1646.jpg" alt="">
+<img src="images/achrafieh16462.jpg" alt="">
+<img src="images/F2slab.jpg" alt="">
+<img src="images/formwork.jpg" alt="">
+    </div>`
+  },
+  Shams: {
+    title: "Shams Beirut",
+    body: `<strong>Description</strong>
+   <p>Shams Beirut is a large-scale mixed-use high-rise development located in Beirut, executed with a strong focus on structural efficiency, speed of delivery, and build quality.</p>
+<p>The project consists of a 16-storey superstructure, with each floor spanning approximately 1,450 m², supported by four basement levels dedicated to parking, each covering around 4,500 m². The basement works required precise coordination due to depth, structural loading, and urban site constraints.</p>
+<p>Cedra Construction delivered the structural works at an accelerated pace, achieving an average construction cycle of 12 days per floor, reflecting a high level of planning, on-site coordination, and execution efficiency.</p>
+<p>Key Project Details
+
+Building Height: 16 storeys | Typical Floor Area: ~1,450 m² | Basements: 4 levels (parking) | Basement Floor Area: ~4,500 m² per level | Owner: Al Mawared Bank | Construction Cycle: 12 days per floor</p>
+
+    <div class="modal-gallery">
+      <img src="images/Shams1.jpg" alt="">
+<img src="images/Shams4.jpg" alt="">
+<img src="images/Shams3.jpg" alt="">
+<img src="images/Shams2.jpg" alt="">
+    </div>`
+  },
+  Residence580: {
+    title: "580 Residence",
+    body: `<strong>Description</strong>
+    <p>580 Residence is a mid-rise residential development located in Mina El Hosn, requiring precise planning and efficient site execution.</p>
+<p>The project comprises a 16-storey residential building, with each typical floor covering approximately 500 m², supported by three basement levels dedicated to parking and services, each with an area of about 1,500 m². Basement construction demanded careful coordination due to depth, structural loads, and proximity to surrounding developments.</p>
+</p>Cedra Construction was appointed to execute the full structural contracting works, including foundations, basements, vertical reinforced concrete elements, and slabs. The project was delivered within a total construction period of 12 months, reflecting disciplined scheduling, sequencing, and on-site management.</p>
+</p>Key Project Details: | Location: Mina El Hosn – Beirut | Building Height: 16 floors | Typical Floor Area: ~500 m² | Basements: 3 levels (parking) | Basement Floor Area: ~1,500 m² per level | Completion Time: 12 months | Scope of Works: Full structural contracting (reinforced concrete works)</p>
+    <div class="modal-gallery">
+      <img src="images/5801.jpg" alt="">
+<img src="images/5802.jpg" alt="">
+<img src="images/5803.jpg" alt="">
+<img src="images/5804.jpg" alt="">
+    </div>`
+  },
+Toyotacity: {
+    title: "Toyota City",
+    body: `<strong>Description</strong>
+    <p>Toyota City Hazmieh is a large-scale commercial automotive facility located in Hazmieh, designed to accommodate showroom, service, and operational functions to international automotive standards.</p>
+<p>The project covers a total built-up area of over 10,000 m², requiring a high level of precision and consistency in architectural concrete finishes. Cedra Construction was responsible for the execution of fair-faced concrete completion works, delivering exposed concrete surfaces with strict aesthetic and quality requirements.</p>
+</p>The works were completed within a 10-month construction period, reflecting careful workmanship, surface control, and coordination to meet architectural expectations for visible structural elements.</p>
+</p>Key Project Details: | Location: Hazmieh | Total Floor Area: ~10,000 m² | Completion Time: 10 months | Scope of Works: Fair-faced concrete completion</p>
+    <div class="modal-gallery">
+      <img src="images/toyota1.jpg" alt="">
+<img src="images/toyota2.jpg" alt="">
+<img src="images/toyota3.jpg" alt="">
+<img src="images/toyota4.jpg" alt="">
+    </div>`
+  },
+UCA: {
+    title: "Universal College (new building) - Aley",
+    body: `<strong>Description</strong>
+    <p>UCA College (Universal College Aley) is an educational development located in Aley, designed to accommodate modern university classrooms and academic facilities.</p>
+<p>The project consists of a four-storey academic building, with each floor covering approximately 1,100 m², supported by one basement level. The layout was developed to meet functional requirements for higher education use, with emphasis on structural efficiency and adaptability of internal spaces.</p>
+</p>Cedra Construction was responsible for the full contracting works of the new building, delivering the project in line with institutional standards for durability, safety, and construction quality.</p>
+</p>Key Project Details: | Location: Aley | Building height: 4 Floors | Typical Floor Area: ~1,100 m² | Number of Basements: 1 | Completion Time: 6 months | Scope of Works: Full contracting works of the new building</p>
+    <div class="modal-gallery">
+      <img src="images/UCA1.jpg" alt="">
+<img src="images/UCA2.jpg" alt="">
+<img src="images/UCA3.jpg" alt="">
+<img src="images/UCA4.jpg" alt="">
+    </div>`
+  },
+mario: {
+    title: "Private residential Villa - Cedars",
+    body: `<strong>Description</strong>
+    <p>This private residential villa is located in The Cedars, a high-altitude mountainous area requiring careful structural design and execution due to climatic and site conditions.</p>
+<p>The villa has a total built-up area of approximately 1,500 m², featuring a distinctive 450 m² roof slab supported on four corner columns, creating large cantilevered spans and open architectural spaces. All slabs were designed and executed using post-tensioned concrete, allowing for enhanced structural efficiency, reduced slab thickness, and long-span performance.</p>
+</p>Cedra Construction was responsible for all concrete contracting works, delivering the project within a total construction period of 8 months, while maintaining high standards of precision, quality control, and structural integrity.</p>
+</p>Key Project Details: | Location: Cedars of Lebanon | Total Built-up Area: ~1,500 m² | Roof Structure: ~450 m² roof on four corner columns | Structural System: Post-tensioned concrete slabs | Completion Time: 8 months | Scope of Works: Full contracting works</p>
+    <div class="modal-gallery">
+      <img src="images/mario1.jpg" alt="">
+<img src="images/mario2.jpg" alt="">
+<img src="images/mario3.jpg" alt="">
+<img src="images/mario4.jpg" alt="">
+    </div>`
+  },
+
+achrafieh668: {
+    title: "Residential Building - Achrafieh",
+    body: `<strong>Description</strong>
+    <p>Achrafieh 668 is a residential development located in Forn El Hayek Street, within one of Beirut’s established urban residential districts</p>
+<p>The project comprises 12 upper residential floors, supported by four basement levels, designed to accommodate parking and building services. The development required careful structural coordination due to basement depth and urban site constraints.</p>
+</p>Cedra Construction delivered the project within a total completion period of 16 months, applying disciplined scheduling, quality control, and construction management to meet residential performance and safety standards.</p>
+</p>Key Project Details: | Location: Achrafieh – Forn El Hayek Street, Beirut | Basements: 4 levels | Completion Time: 16 months | Scope of Works: Full contracting works</p>
+    <div class="modal-gallery">
+      <img src="images/6681.jpg" alt="">
+<img src="images/6682.jpg" alt="">
+<img src="images/6683.jpg" alt="">
+    </div>`
+  },
+
+romanos: {
+    title: "Private residential Villa - Cedars",
+    body: `<strong>Description</strong>
+    <p>Romanos Villa is a private residential project located in Bsharri, along the main Cedars road, in proximity to the Samar Resort area. The location required careful coordination of construction activities within a mountainous and environmentally sensitive setting.</p>
+<p>The villa comprises two upper residential floors, one attic level, and one basement, with a total built-up area of approximately 1,500 m². The layout was designed to accommodate residential living while responding to the site’s topography and climatic conditions.</p>
+</p>Cedra Construction executed the project as a residential building, delivering structurally sound and well-coordinated works in line with quality and durability requirements expected for private villas in high-altitude regions.</p>
+</p>Key Project Details: | Location: Bsharri – Cedars main road | Basements: 1 level | Floors: 2 floors + Attic | Total Built-Up Area: ~1,500 m² | Scope of Works: Full contracting works</p>
+    <div class="modal-gallery">
+      <img src="images/romanos1.jpg" alt="">
+<img src="images/romanos2.jpg" alt="">
+<img src="images/romanos3.jpg" alt="">
+    </div>`
+  },
+
+fanar: {
+    title: "Residential Building - Fanar",
+    body: `<strong>Description</strong>
+    <p>This residential development is located in Fanar and represents a fully integrated turnkey project delivered entirely by Cedra Construction.</p>
+<p>Cedra was responsible for the entire project lifecycle, beginning with land acquisition, followed by excavation and earthworks, structural construction, and complete architectural and finishing works. The project was executed under a single management and delivery framework, ensuring full control over quality, cost, and construction sequencing.</p>
+</p>The residential building was designed and constructed to maximize site potential and views, incorporating reinforced concrete structures, cantilevered balconies, and coordinated architectural finishes. Delivering the project end-to-end required detailed planning, technical expertise, and close coordination across all construction phases.</p>
+</p>Key Project Details: | Location: Fanar – Metn, Lebanon | Cedra’s Scope: Land acquisition, Excavation & earthworks, Structural construction, Architectural & finishing works.</p>
+    <div class="modal-gallery">
+      <img src="images/fanar1.jpg" alt="">
+    </div>`
+  },
+
+
+  Medawar1200: {
+    title: "Medawar 1200",
+    body: `<strong>Description</strong>
+    <p>Medawar 1200 is a newly developed residential building strategically located along the highway leading to Downtown Beirut, offering efficient access within a dense urban corridor.</p>
+<p>The project comprises 13 upper floors, each with a typical floor area of approximately 416 m², supported by four basement levels dedicated to parking, with each basement spanning around 1,300 m². The development provides a total of 160 parking spaces, requiring careful structural coordination between the superstructure and deep basement works.</p>
+</p>Cedra Construction was responsible for all reinforced concrete structural works, including foundations, basements, vertical elements, and slabs. Execution was carried out under constrained site conditions, with close attention to structural performance, sequencing, and construction quality.</p>
+</p>Key Project Details: | Location: Medawar – Beirut | Building Height: 13 floors | Typical Floor Area: ~416 m² | Basements: 4 levels (parking) | Basement Floor Area: ~1,300 m² per level | Parking Capacity: 160 cars | Scope of Works: Full structural contracting (reinforced concrete works)</p>
+    <div class="modal-gallery">
+      <img src="images/Medawar1.jpg" alt="">
+<img src="images/Medawar2.jpg" alt="">
+<img src="images/Medawar3.jpg" alt="">
+<img src="images/Medawar4.jpg" alt="">
+    </div>`
+  }
+};
+
+const modalBackdrop = document.getElementById("project-modal-backdrop");
+const modalTitle = document.getElementById("project-modal-title");
+const modalBody = document.getElementById("project-modal-body");
+const modalClose = document.getElementById("project-modal-close");
+
+document.querySelectorAll(".project-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const key = card.dataset.project;
+    const details = projectDetails[key];
+    if (!details) return;
+    modalTitle.textContent = details.title;
+    modalBody.innerHTML = details.body;
+    modalBackdrop.classList.add("active");
+  });
+});
+
+modalClose.addEventListener("click", () => {
+  modalBackdrop.classList.remove("active");
+});
+
+modalBackdrop.addEventListener("click", (e) => {
+  if (e.target === modalBackdrop) {
+    modalBackdrop.classList.remove("active");
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    modalBackdrop.classList.remove("active");
+  }
+});
+</script>
+
+
+<!-- IMAGE LIGHTBOX -->
+<div id="lightbox" class="lightbox-overlay">
+  <span class="lightbox-close">&times;</span>
+
+  <button class="lightbox-nav prev" aria-label="Previous image">&#10094;</button>
+  <button class="lightbox-nav next" aria-label="Next image">&#10095;</button>
+
+  <img id="lightbox-img" src="" alt="Expanded image">
+</div>
+
+</body>
+
+<script>
+/* Image lightbox logic (isolated) */
+(function(){
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const closeBtn = document.querySelector(".lightbox-close");
+  if(!lightbox || !lightboxImg || !closeBtn) return;
+
+  document.addEventListener("click", function(e){
+    const img = e.target.closest(".project-modal-body .modal-gallery img");
+    if(!img) return;
+    e.stopPropagation();
+    lightboxImg.src = img.src;
+    lightbox.classList.add("active");
+  });
+
+  closeBtn.addEventListener("click", function(e){
+    e.stopPropagation();
+    lightbox.classList.remove("active");
+  });
+
+  lightbox.addEventListener("click", function(e){
+    if(e.target === lightbox){
+      lightbox.classList.remove("active");
+    }
+  });
+
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){
+      lightbox.classList.remove("active");
+    }
+  });
+})();
+</script>
+
+
+<script>
+/* Image lightbox with swipe + arrows */
+(function(){
+  const lightbox = document.getElementById("lightbox");
+  const imgEl = document.getElementById("lightbox-img");
+  const closeBtn = document.querySelector(".lightbox-close");
+  const prevBtn = document.querySelector(".lightbox-nav.prev");
+  const nextBtn = document.querySelector(".lightbox-nav.next");
+  if(!lightbox || !imgEl || !closeBtn) return;
+
+  let images = [];
+  let currentIndex = 0;
+  let startX = null;
+
+  function openAt(i){
+    if(i < 0 || i >= images.length) return;
+    currentIndex = i;
+    imgEl.src = images[currentIndex].src;
+    lightbox.classList.add("active");
+  }
+
+  document.addEventListener("click", e=>{
+    const img = e.target.closest(".project-modal-body .modal-gallery img");
+    if(!img) return;
+    e.stopPropagation();
+    images = Array.from(img.closest(".modal-gallery").querySelectorAll("img"));
+    openAt(images.indexOf(img));
+  });
+
+  closeBtn.addEventListener("click", e=>{
+    e.stopPropagation();
+    lightbox.classList.remove("active");
+  });
+
+  lightbox.addEventListener("click", e=>{
+    if(e.target === lightbox) lightbox.classList.remove("active");
+  });
+
+  if(prevBtn) prevBtn.addEventListener("click", e=>{
+    e.stopPropagation();
+    openAt(currentIndex - 1);
+  });
+
+  if(nextBtn) nextBtn.addEventListener("click", e=>{
+    e.stopPropagation();
+    openAt(currentIndex + 1);
+  });
+
+  document.addEventListener("keydown", e=>{
+    if(!lightbox.classList.contains("active")) return;
+    if(e.key === "Escape") lightbox.classList.remove("active");
+    if(e.key === "ArrowLeft") openAt(currentIndex - 1);
+    if(e.key === "ArrowRight") openAt(currentIndex + 1);
+  });
+
+  lightbox.addEventListener("touchstart", e=>{
+    startX = e.touches[0].clientX;
+  }, {passive:true});
+
+  lightbox.addEventListener("touchend", e=>{
+    if(startX === null) return;
+    const diff = startX - e.changedTouches[0].clientX;
+    startX = null;
+    if(Math.abs(diff) < 60) return;
+    if(diff > 0) openAt(currentIndex + 1);
+    else openAt(currentIndex - 1);
+  }, {passive:true});
+})();
+</script>
+
+</html>
