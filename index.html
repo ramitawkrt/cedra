@@ -1035,20 +1035,57 @@ body::after{
     </div>
 
     <div class="grid-2" style="margin-top:1.6rem;">
-      <form class="card"
-      action="https://formspree.io/f/xjggvpkk"
-      method="POST">
-        <h2 style="font-size:1.3rem;margin-bottom:0.6rem;">Send us a message</h2>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-          <input type="text" name="name" placeholder="Name" style="flex:1;min-width:180px;padding:0.6rem;border-radius:9px;border:1px solid rgba(0,0,0,0.16);">
-          <input type="email" name="email" placeholder="Email" style="flex:1;min-width:180px;padding:0.6rem;border-radius:9px;border:1px solid rgba(0,0,0,0.16);">
-        </div>
-        <input type="tel" name="phone" placeholder="Phone / WhatsApp" style="width:100%;margin-top:0.7rem;padding:0.6rem;border-radius:9px;border:1px solid rgba(0,0,0,0.16);">
-        <textarea name="message" placeholder="Project details (location, area, type of work, timeline…)" style="width:100%;margin-top:0.7rem;padding:0.6rem;border-radius:9px;border:1px solid rgba(0,0,0,0.16);min-height:120px;"></textarea>
-        <button type="submit" class="btn" style="margin-top:0.8rem;">Send request</button>
-        <p style="font-size:0.8rem;color:var(--muted);margin-top:0.4rem;">
-        </p>
-      </form>
+      <form
+  class="card"
+  action="https://api.web3forms.com/submit"
+  method="POST"
+>
+
+  <!-- Web3Forms Access Key -->
+  <input type="hidden" name="access_key" value="5fbb7613-f735-4c3f-8a22-567b57ebbfeb">
+
+  <!-- Email Subject -->
+  <input type="hidden" name="subject" value="New Quote Request">
+
+  <!-- Spam Protection -->
+  <input type="checkbox" name="botcheck" style="display:none">
+
+  <h2 style="font-size:1.3rem;margin-bottom:0.6rem;">Send us a message</h2>
+
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+    <input
+      type="text"
+      name="name"
+      placeholder="Name"
+      required
+      style="flex:1;min-width:180px;padding:0.6rem;border-radius:9px;border:1px solid rgba(0,0,0,0.16);"
+    >
+
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      required
+      style="flex:1;min-width:180px;padding:0.6rem;border-radius:9px;border:1px solid rgba(0,0,0,0.16);"
+    >
+  </div>
+
+  <textarea
+    name="message"
+    placeholder="Tell us about your project"
+    required
+    style="margin-top:1rem;width:100%;padding:0.6rem;border-radius:9px;border:1px solid rgba(0,0,0,0.16);min-height:120px;"
+  ></textarea>
+
+  <button
+    type="submit"
+    style="margin-top:1rem;padding:0.7rem 1.2rem;border-radius:9px;border:none;cursor:pointer;"
+  >
+    Send Message
+  </button>
+
+</form>
+
 
       <div style="display:flex;flex-direction:column;gap:1.2rem;font-size:0.9rem;color:var(--muted);">
         <div class="card">
